@@ -24,8 +24,47 @@ public class Cookbook
         }
     }
 
-    public void AddIngredient()
+    public void AddIngredient(int id)
     {
+        foreach (var ingredient in AvailableIngredients)
+        {
+            if (ingredient.ID == id)
+            {
+                Recipe.Add(ingredient);
+                Console.WriteLine($"Added {ingredient.Name}");
+            }
+
+        }
+    }
+
+    public void RequestIngredientsId()
+    {
+        string input;
+        bool validId;
+        int id;
+
+        do
+        {
+            Console.WriteLine("Add an ingredient by it's Id or type anything else if finished");
+            input = Console.ReadLine();
+
+            validId = int.TryParse(input, out id) && id >= 1 && id <= 8;
+
+            if (validId) AddIngredient(id);
+            
+        } while (validId);
 
     }
+
+    public void PrintRecipe()
+    {
+        Console.WriteLine("Recipe added:");
+
+        foreach (var ingredient in Recipe)
+        {
+            Console.WriteLine(ingredient);
+            ingredient.Prepare();
+        }
+    }
+
 }
