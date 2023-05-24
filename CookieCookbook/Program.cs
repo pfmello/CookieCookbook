@@ -1,28 +1,13 @@
-﻿using CookieCookbook.Enums;
-using CookieCookbook.Ingredients;
+﻿global using CookieCookbook.Enums;
+global using CookieCookbook.Ingredients;
+global using CookieCookbook.CookBook;
 
 const string FileName = "recipes";
 FileFormat format = FileFormat.Json;
 
-List<Ingredient> availableIngredients = new List<Ingredient>
-{
-    new WheatFlour(),
-    new CoconutFlour(),
-    new Butter(),
-    new Chocolate(),
-    new Sugar(),
-    new Cardamom(),
-    new Cinnamon(),
-    new CocoaPowder(),
-};
-
-foreach (Ingredient ingredient in availableIngredients)
-{
-    Console.WriteLine($"{ingredient.ID}. {ingredient.Name}");
-    Console.WriteLine("=======");
-    ingredient.Prepare();
-    Console.WriteLine("=======");
-}
+Cookbook cookbook = new Cookbook();
+cookbook.ShowAvailableIngredients();
 
 
 Console.ReadKey();
+
