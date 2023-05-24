@@ -11,5 +11,3 @@ public class Butter : Ingredient
         Console.WriteLine("Melt on low heat.Add to other ingredients.");
     }
 }
-
-
